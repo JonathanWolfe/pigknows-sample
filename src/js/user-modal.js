@@ -1,13 +1,12 @@
-import React from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { useTheme, makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-
+import React from 'react';
 import DataList from './data-list';
 
 // eslint-disable-next-line no-unused-vars

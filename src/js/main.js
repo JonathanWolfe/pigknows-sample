@@ -1,16 +1,18 @@
+import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Container';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { makeStyles } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
-import { useFetch } from 'react-hooks-async';
-
+import { useAsyncRun, useAsyncTask } from 'react-hooks-async';
 import UserCard from './user-card';
 
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
+    paddingTop: '2em',
   },
   userCard: {
     padding: theme.spacing(2),
@@ -20,33 +22,46 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+function fetchUsers() {
+  return fetch('https://randomuser.me/api?results=6').then(resp => resp.json());
+}
+
 function App() {
   const classes = useStyles();
 
-  const url = `https://randomuser.me/api?results=3`;
-  const { pending, error, result, abort } = useFetch(url);
+  const task = useAsyncTask(fetchUsers);
 
-  if (pending) {
+  useAsyncRun(task);
+
+  if (task.pending) {
     return (
-      <div>
-        Loading...
-        <button type="button" onClick={abort}>
-          Abort
-        </button>
-      </div>
+      <Container>
+        <CssBaseline />
+
+        <div className={classes.root}>
+          <Typography variant="subtitle1">Loading&hellip;</Typography>
+          <Button variant="contained" color="secondary" onClick={task.abort}>
+            Abort
+          </Button>
+        </div>
+      </Container>
     );
   }
 
-  if (error) {
+  if (task.error) {
     return (
-      <div>
-        Error: {error.name} {error.message}
-      </div>
+      <Container>
+        <CssBaseline />
+
+        <div className={classes.root}>
+          Error: {task.error.name} {task.error.message}
+        </div>
+      </Container>
     );
   }
 
-  const cards = result.results.map((user, index) => (
-    <Grid item xs key={index}>
+  const cards = task.result.results.map((user, index) => (
+    <Grid item xs={12} sm={4} key={index}>
       <UserCard className={classes.userCard} user={user} />
     </Grid>
   ));
@@ -58,6 +73,12 @@ function App() {
       <div className={classes.root}>
         <Grid container spacing={3}>
           {cards}
+
+          <Grid item>
+            <Button variant="contained" color="primary" onClick={task.start}>
+              Refresh
+            </Button>
+          </Grid>
         </Grid>
       </div>
     </Container>
