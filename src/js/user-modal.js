@@ -8,7 +8,6 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme, makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 
-import UserPropTypes from './types/user-propType';
 import DataList from './data-list';
 
 // eslint-disable-next-line no-unused-vars
@@ -21,7 +20,7 @@ const useStyles = makeStyles(_ => ({
 /**
  * Opens a modal displaying all user info
  *
- * @param {import('./types/user-propType').User} {user} - The User object
+ * @param {Object.<string,*>} {user} - The User object
  * @param {bool} {open} - Is modal open or not
  * @param {Function} {handleClose} - Function to call on close event
  * @returns
@@ -60,7 +59,7 @@ function ResponsiveDialog({ user, open, handleClose }) {
 }
 
 ResponsiveDialog.propTypes = {
-  user: UserPropTypes,
+  user: PropTypes.object,
   open: PropTypes.bool,
   handleClose: PropTypes.func,
 };

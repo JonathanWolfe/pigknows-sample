@@ -6546,6 +6546,11 @@ react-dom@^16.12.0:
     prop-types "^15.6.2"
     scheduler "^0.18.0"
 
+react-hooks-async@^3.9.0:
+  version "3.9.0"
+  resolved "https://registry.yarnpkg.com/react-hooks-async/-/react-hooks-async-3.9.0.tgz#00a56a3e9c74038a021a13059542b9ecc556ea60"
+  integrity sha512-W1U5XgpvtQsC/NQCwk+8Ip7p/78Y5U3pFioGhnpz2wzlqzA4wWDAOjWeFzFu1uRg5R4pgj/vNCs8rz3vI4O/TA==
+
 react-is@^16.7.0, react-is@^16.8.0, react-is@^16.8.1, react-is@^16.8.4:
   version "16.12.0"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.12.0.tgz#2cc0fe0fba742d97fd527c42a13bec4eeb06241c"
