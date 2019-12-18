@@ -5,8 +5,8 @@
   "main": "src/index.html",
   "scripts": {
     "lint": "eslint . --fix",
-    "start": "cross-env NODE_ENV=development parcel src/index.html --open",
-    "build": "cross-env NODE_ENV=production parcel build dist/index.html --public-url ./"
+    "start": "parcel src/index.html --open",
+    "build": "parcel build src/index.html --public-url ./"
   },
   "keywords": [],
   "author": "",
