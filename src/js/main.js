@@ -15,6 +15,7 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(2),
     textAlign: 'center',
     color: theme.palette.text.secondary,
+    textTransform: 'capitalize',
   },
 }));
 
@@ -87,10 +88,10 @@ function App() {
             <UserCard className={classes.userCard} user={users[0]} />
           </Grid>
           <Grid item xs>
-            <UserCard className={classes.userCard} user={users[0]} />
+            {/* <UserCard className={classes.userCard} user={users[0]} /> */}
           </Grid>
           <Grid item xs>
-            <UserCard className={classes.userCard} user={users[0]} />
+            {/* <UserCard className={classes.userCard} user={users[0]} /> */}
           </Grid>
         </Grid>
       </div>
